@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<title>W3.CSS Template</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
+<style>
+body,h1 {font-family: "Raleway", sans-serif}
+body, html {height: 100%}
+.bgimg {
+  background-image: url('imgs/forest.jpg');
+  min-height: 100%;
+  background-position: center;
+  background-size: cover;
+}
+#btn-change {
+  text-align: center;
+  font-size: 2em;
+  padding: 10px 5px;
+  background-color: aliceblue;
+  border-radius: 10px;
+  margin: auto;
+  display: block;
+}
+
+</style>
+<body>
+
+<div class="bgimg w3-display-container w3-animate-opacity w3-text-white">
+  <div class="w3-display-topleft w3-padding-large w3-xlarge">
+    Logo
+  </div>
+  <div class="w3-display-middle">
+    <h1 id="title" class="w3-jumbo w3-animate-top"></h1>
+    <hr class="w3-border-grey" style="margin:auto;width:40%">
+    <p class="w3-large w3-center">35 days left</p>
+    <button id="btn-change" onclick="changeTitle();">change title</button>
+  </div>
+  <div class="w3-display-bottomleft w3-padding-large">
+    Powered by <a href="https://www.w3schools.com/w3css/default.asp" target="_blank">w3.css</a>
+  </div>
+</div>
+
+<script type="text/javascript">
+  
+  document.getElementById("title").innerHTML = "The forest in mist"
+
+
+  //  DATA TYPES
+  var num = 5; // integer
+  console.log(num);
+  var numDecimal = 4.3; // floating point number
+  console.log(numDecimal);
+  var s = "this is string"; // string
+  console.log(s);
+  var arr = ["10", "array", "bannana", 5, 3]; // array
+  console.log(arr);
+  var correct = true; // boolean 
+  console.log(correct);
+  const person = {
+    firstName: "Jon",
+    lastName: "snow",
+    age: 30,
+    fullName: function(){
+      return this.firstName + " " + this.lastName;
+    }
+  }; // Object
+  console.log(person);
+  console.log(person.lastName);
+  console.log(person.fullName());
+
+  var horse; // Undefined
+
+  // FUNCTION
+  function substract(a,b){
+    return a - b;
+  }
+
+  let x = substract(10,4);
+  console.log("10 - 4 = ", + x);
+
+  function changeTitle() {
+    let title = document.getElementById("title").innerHTML;
+    if (title == "The forest in mist") {
+      document.getElementById("title").innerHTML = "Great mist";
+    } else {
+      document.getElementById("title").innerHTML = "The forest in mist";
+    }
+  }
+
+  // STRING METHODS
+  var text = "asdasdasdbgg";
+  var textLength = text.length;
+  console.log(text + " " + textLength);
+
+  let text2 = "We are the so-called \"Vikings\" from the north.";
+  console.log(text2);
+
+  var sliceString = "Demon King Northmoon";
+  console.log(sliceString.slice(7));
+  console.log(sliceString.slice(7,15));
+  var newString = sliceString.replace("King", "Emperor");
+  console.log(newString);
+
+  function upperCase(stringElement) {
+    return stringElement.toUpperCase();
+  }
+  console.log(upperCase(sliceString));
+
+  function lowerCase(stringElement) {
+    return stringElement.toLowerCase();
+  }
+  console.log(lowerCase(sliceString));
+
+  var trimString = "       Sovergin of all times        ";
+  console.log(trimString);
+  console.log(trimString.trim());
+
+// String exersise - Ceasars cypher
+/*
+function ceasarsCypher(){
+  var inputString = window.prompt("input your string to cypher: ");
+  
+  for (let i = 0; i < inputString.length; i++) {
+    var transformedArr = "";
+    transformedArr[i] = inputString.charCodeAt(i) + ",";
+  }
+  console.log(transformedArr);
+}
+
+ceasarsCypher();
+
+arra = ["a", "b", "c", "d"];
+console.log(arra[3].charCodeAt(0));
+*/
+
+
+</script>
+
+</body>
+</html>
