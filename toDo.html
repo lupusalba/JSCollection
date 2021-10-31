@@ -4,92 +4,106 @@
     <meta charset="utf-8">
     <title>to do</title>
     <link href="" rel="stylesheet" />
-                                        <!--********************************         SOURCE FROM: http://       --->
+
     <style>
-                                        /********************************   https://code-boxx.com/simple-javascript-to-do-list/#sec-html        ********************************/
-        #todo-wrap input {
+
+        * {
             box-sizing: border-box;
-            padding: 10px;
         }
 
-        #todo-wrap input[type=button], #todo-wrap input[type=subit] {
-            color: #fff;
+        body {
+            background-color: #0EEAFF;
+        }
+
+        ul {
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        li {
+            list-style: none;
+        }
+
+        input[type=button],
+        input[type=submit] {
             cursor: pointer;
         }
 
-        #todo-wrap {
-            max-width: 500px;
-            background: azure;
-            padding: 20px;
-            margin: 0 auto;
+        #todo-wrap { 
+            width: 50%;
+            height: 100%;
+            margin: 10% auto 0 auto;
+            border: 3px solid #fff;
+            background: #fff;
         }
+
+
 
         #todo-wrap h1 {
             font-size: 1.5em;
-            margin: 0;
+            text-align: center;
             color: #333;
         }
 
-        #todo-add { display: flex; }
-        #todo-itam { width: 85%; }
-        #todo-save {
-            width: 15%;
-            background: #CF585C;
-            border: 2px solid #CF585C;
-        }
-
-        #todo-del { margin: 10px 0; }
-        #todo-del input {
-            background: #CF585C;
-            border: 2px solid #CF585C;
-        }
-
-        .todo-row {
+        #todo-add {
             display: flex;
-            margin-top: 10px;
+            height: 50px;
+        }
+
+        #todo-item {
+            flex: 5;
+            width: 90%;
+            margin: 0 auto;
+            background: #fff;
+            border: 2px solid #ff230e;
+        }
+
+        #todo-save {
+            flex: 1;
+            background: #ff230e;
+            border: 2px solid #ff230e;
+        }
+
+        #todo-del {
+            margin: 10px 0;
+            text-align: center; 
+        }
+
+        #todo-del input {
+            height: 40px;
+            padding: 10px;
+            background: #ff230e;
+            border: 2px solid #ff230e;
         }
 
         .todo-item {
             width: 100%;
             background: #fff;
-            border: 1px solid #eee;
             padding: 10px;
+            margin: 10px;
         }
 
-        .todo-item.cx {
-            background: #FFE1D7;
+        .li-item {
+            min-height: 45px;
+            height: 100%;
+            line-height: 45px;
+            margin-bottom: 20px;
+            border: 2px solid #0EEAFF;
+        }
+
+        .li-item input {
+            width: 45px;
+            height: 42px;
+            background: #fff;
+            color: #000;
+            border: none;
+        }
+
+        .finished {
+            background: rgb(152, 250, 152);
+            color: #fff;
+            border: 3px solid rgb(152, 250, 152);
             text-decoration: line-through;
         }
-
-        .todo-item.done {
-            background: #DCFFD7;
-        }
-
-        .todo-cx, .todo-ok {
-            width: 50px;
-        }
-
-        .todo-cx {
-            background: #4AA53D;
-            border: #4AA53D;
-        }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
@@ -103,15 +117,19 @@
 
         <form id="todo-add">
             <input type="text" id="todo-item" placeholder="New Item" required/>
-            <input type submit id="todo-save" value="&#10010;"/>
+            <input onclick="addNewItem();" type="button" id="todo-save" value="&#10010;"/>
         </form>
 
         <div id="todo-del">
-            <input type="button" id="todo-delall" value="Delete All"/>
-            <input type="button" id="todo-delcom" value="Delete Completed"/>
+            <input onclick="delAll();" type="button" id="todo-delall" value="Delete All"/>
+            <input onclick="deleteAllCompleted();" type="button" id="todo-delcom" value="Delete Completed"/>
         </div>
 
-        <div id="todo-list"></div>
+        <div id="todo-list">
+            <ul id="list">
+
+            </ul>
+        </div>
 
     </div>
 
@@ -121,8 +139,43 @@
 
 
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
-    <script>
+    <script type="text/javascript">
+    
+        var i = 0;
+        function addNewItem() {
+    
+            let newItem = document.getElementById("todo-item").value;
+            
+            let finishedDel = `<input onclick="markFinished(this.id);" type="button" id="todo-finished-${i}" value="	&#x1F5F8;"/><input onclick="delSingleItem(this.id);" type="button" id="todo-delItem-${i}" value="&#10006;"/>`
+            let todoItemEl = document.createElement("LI");
+            todoItemEl.classList.add("li-item");
+            
+            todoItemEl.id = "item-" + i;
+            i+=1;
+            
+
+            todoItemEl.innerHTML = finishedDel + newItem;
+            document.getElementById("list").appendChild(todoItemEl);
+        }
+
+        function markFinished(idEl) {
+            let idNum = idEl.match(/\d+/);
+            document.getElementById(`item-${idNum}`).classList.add("finished");
+        }
+
+        function delSingleItem(idEl) {
+            let idNum = idEl.match(/\d+/);
+            document.getElementById(`item-${idNum}`).remove();
+        }
+
+        function deleteAllCompleted() {
+            document.querySelectorAll(".finished").forEach(e => e.remove());
+        }
+
+        function delAll(){
+            document.querySelectorAll(".li-item").forEach(e => e.remove());
+        }
+    
     </script>
 </body>
 </html>
