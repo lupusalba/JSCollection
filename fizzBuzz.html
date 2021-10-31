@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Calculator</title>
+    <link href="" rel="stylesheet" />
+
+    <style>
+
+    </style>
+</head>
+<body>
+
+    <button onclick="FizzBuzz();">FizzBuzz</button>
+
+<script type="text/javascript">
+
+function FizzBuzz() {
+    let num = prompt("enter your number: ");
+
+    for (let i = 1; i <= num; i++) {
+        if (i % 3 === 0 && i % 5 === 0) {
+            console.log("FizzBuzz");
+        } else if (i % 3 === 0) {
+            console.log("Fizz");
+        } else if (i % 5 === 0) {
+            console.log("Buzz");
+        } else {
+            console.log(i);
+        };
+    };
+}
+
+
+</script>
+</body>
