@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>to do</title>
-    <link href="" rel="stylesheet" />
-
+    <title>Milos's ToDo APP</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@200&display=swap" rel="stylesheet">
     <style>
 
         * {
@@ -12,7 +13,8 @@
         }
 
         body {
-            background-color: #0EEAFF;
+            background-color: #0B132B;
+            font-family: 'Barlow', sans-serif;
         }
 
         ul {
@@ -32,8 +34,8 @@
             width: 50%;
             height: 100%;
             margin: 10% auto 0 auto;
-            border: 3px solid #fff;
-            background: #fff;
+
+        
         }
 
 
@@ -41,7 +43,8 @@
         #todo-wrap h1 {
             font-size: 1.5em;
             text-align: center;
-            color: #333;
+            opacity: .7;
+            color: #fff;
         }
 
         #todo-add {
@@ -49,18 +52,32 @@
             height: 50px;
         }
 
+        #todo-add:active {
+            box-shadow: 1px 1px 5px 5px #fff inset;
+           transition: all .5s;
+        }
+
         #todo-item {
             flex: 5;
             width: 90%;
             margin: 0 auto;
-            background: #fff;
-            border: 2px solid #ff230e;
+            border-bottom: #3A506B;
         }
 
         #todo-save {
             flex: 1;
-            background: #ff230e;
-            border: 2px solid #ff230e;
+            background: #3A506B;
+            border: 2px solid #3A506B;
+         box-shadow: none;   
+        }
+
+        #todo-save:active {
+            box-shadow: 1px 1px 5px 5px #fff inset;
+            transition: all .5s;
+        }
+        #todo-save:hover {
+            border: 2px solid #fff;
+            transition: all .5s;
         }
 
         #todo-del {
@@ -69,10 +86,23 @@
         }
 
         #todo-del input {
-            height: 40px;
+            height: 50px;
             padding: 10px;
-            background: #ff230e;
-            border: 2px solid #ff230e;
+            background: #3A506B;
+            border: 2px solid #3A506B;
+            color: #fff;
+            font-size: 1.3em;
+            box-shadow: none;
+        }
+
+        #todo-del input:active {
+           box-shadow: 1px 1px 5px 5px #fff inset;
+           transition: all .5s;
+        }
+
+        #todo-del input:hover {
+           border: 2px solid #fff;
+           transition: all .5s;
         }
 
         .todo-item {
@@ -87,21 +117,24 @@
             height: 100%;
             line-height: 45px;
             margin-bottom: 20px;
-            border: 2px solid #0EEAFF;
+            border-bottom: 1px solid #3A506B;
+            padding: 5px 10px;
+            color: #fff;
+            font-size: 1.5em;
         }
 
         .li-item input {
             width: 45px;
             height: 42px;
-            background: #fff;
-            color: #000;
+            color: #fff;
+            background: #0B132B;
             border: none;
+            b
         }
 
         .finished {
-            background: rgb(152, 250, 152);
-            color: #fff;
-            border: 3px solid rgb(152, 250, 152);
+            color: lightblue;
+
             text-decoration: line-through;
         }
 
