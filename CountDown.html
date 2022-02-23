@@ -1,23 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <title>Milos Portfolio</title>
+    <title>Milos's CountDown'</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
     <meta name="description" content="" />
 
     <style type="text/css">
+        body {
+            box-sizing: border-box;
+            margin: 0;
+            color: #fff;
+            font-size: 2em;
+        }
 
+        #wrapper {
+            min-height: 100vh;
+            height: 100%;
+            width: 100vw;
+            overflow: hidden;
+            background-image: url(./imgs/angelo-abear-knTKij60p3g-unsplash.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            background-position: center;
+            margin: 0;
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+            align-content: center;
+            justify-items: center;
+            align-items: center;
+        }
+
+        #timer {
+            border: 1px solid #fff;
+            height: 200px;
+            width: 70%;
+            margin: 10% auto;
+            display: grid;
+            grid-auto-flow: column;
+            grid-template-columns: 1fr 1fr 1fr 1fr;
+            grid-template-rows: 1fr;
+            align-content: center;
+            justify-items: center;
+            align-items: center;
+        }
+
+        .timePeriod {
+            height: 50px;
+            width: 50px;
+            line-height: 50px;
+            text-align: center;
+            padding: 20px;
+            border: 2px solid #fff;
+            margin: 10px;
+            
+        }
     </style>
 
 </head>
+
 <body>
+    <!-- background image source: https://unsplash.com/photos/knTKij60p3g -->
+
+
+    <div id="wrapper">
+        <div id="timer">
+            <div id="days" class="timePeriod"></div>
+            <div id="hours" class="timePeriod"></div>
+            <div id="minutes" class="timePeriod"></div>
+            <div id="seconds" class="timePeriod"></div>
+        </div><!-- /#timer -->
+    </div>
+
+
+    <script type="text/javascript">
+        //set date of countdown
+        var countdownDate = new Date("Sep 11, 2022 00:00").getTime();
+
+        //update countdown every 1s
+        var x = setInterval(function () {
+            //get todeys date and time
+            var now = new Date().getTime();
+
+            //find athe distance between now and the countdown date
+            var distance = countdownDate - now;
+
+            //time calculation for days, hours, minutes, seconds
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+
+            // display results in the #timer
+            document.getElementById("days").innerHTML = days;
+            document.getElementById("hours").innerHTML = hours;
+            document.getElementById("minutes").innerHTML = minutes;
+            document.getElementById("seconds").innerHTML = seconds;
 
 
 
-
-
+        })
+        
+    </script>
 
 
 </body>
+
 </html>
