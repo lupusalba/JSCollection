@@ -25,17 +25,19 @@
             background-size: cover;
             background-position: center;
             margin: 0;
-            display: grid;
+            display: block;
+            /* display: grid;
             grid-auto-flow: column;
             grid-template-columns: 1fr;
             grid-template-rows: 1fr;
             align-content: center;
             justify-items: center;
-            align-items: center;
+            align-items: center; */
         }
 
         #timer {
-            border: 1px solid #fff;
+            border: 1px solid #c7c7c7;
+            border-radius: 10px;
             height: 200px;
             width: 70%;
             margin: 10% auto;
@@ -46,6 +48,7 @@
             align-content: center;
             justify-items: center;
             align-items: center;
+            box-shadow: -15px 16px 41px 3px rgba(0, 0, 0, 0.72);
         }
 
         .timePeriod {
@@ -54,9 +57,15 @@
             line-height: 50px;
             text-align: center;
             padding: 20px;
-            border: 2px solid #fff;
+            border: 2px solid #c7c7c7;
             margin: 10px;
-            
+            border-radius: 10px;
+            box-shadow: -15px 16px 41px 3px rgba(0, 0, 0, 0.72);
+        }
+
+        .timePeriod:hover {
+            border-radius: 0;
+            transition: all .3s;
         }
     </style>
 
@@ -73,17 +82,32 @@
             <div id="minutes" class="timePeriod"></div>
             <div id="seconds" class="timePeriod"></div>
         </div><!-- /#timer -->
+        <form action="">
+        <input type="datetime-local" id="chosenTime" name="chosenTime" value="2022-02-22T19:30"
+            min="2022-02-24T00:00" max="2030-02-14T00:00">
+            <input type="submit" value="submit" onsubmit="startCountdown()">
+        </form>
     </div>
 
 
     <script type="text/javascript">
         //set date of countdown
         var countdownDate = new Date("Sep 11, 2022 00:00").getTime();
+        var usersDate = document.querySelector('input[type="datetime-local"]');
+            console.log(usersDate.value);
+            console.log(countdownDate);
+
 
         //update countdown every 1s
         var x = setInterval(function () {
             //get todeys date and time
             var now = new Date().getTime();
+
+            
+
+            if(usersDate.value != "2022-02-22T19:30"){
+                countdownDate = usersDate;
+            }
 
             //find athe distance between now and the countdown date
             var distance = countdownDate - now;
@@ -93,6 +117,10 @@
             var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
             var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            //get user input date
+            //var userDate = document.querySelector('input[type="datetime-local"]');
+            //console.log(userDate.value);
 
 
             // display results in the #timer
@@ -104,7 +132,8 @@
 
 
         })
-        
+
+
     </script>
 
 
